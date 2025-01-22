@@ -1,3 +1,5 @@
+server:
+  port: 9099
 spring:
   jackson:
     time-zone: GMT+8
@@ -5,9 +7,9 @@ spring:
   resources:
     static-locations: classpath:/static/,classpath:/views/
   datasource:
-    url: jdbc:mysql://localhost:3306/naaf_console
-    username: root
-    password: 1234
+    url: jdbc:mysql://host:port/ddd-ruoyi
+    username: your_username
+    password: your_password
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:

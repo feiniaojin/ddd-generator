@@ -1,70 +1,13 @@
 {
-  "basePackage": "com.feiniaojin.naaf.console",
+  "basePackage": "com.feiniaojin.ddd.infrastructure.persistence.ruoyi",
   "entities": [
     {
-      "controllerRequestPath": "/sysAccount",
-      "tableName": "sys_account",
-      "entityName": "SysAccount",
-      "versionColumn": "version",
-      "lastModifiedDateColumn": "modified_time",
-      "createDateColumn": "created_time"
-    },
-    {
-      "controllerRequestPath": "/sysUserEvent",
-      "tableName": "sys_user_event",
-      "entityName": "SysUserEvent",
-      "versionColumn": "version",
-      "lastModifiedDateColumn": "modified_time",
-      "createDateColumn": "created_time"
-    },
-    {
-      "controllerRequestPath": "/sysAccountRelUser",
-      "tableName": "sys_account_rel_user",
-      "entityName": "SysAccountRelUser",
-      "versionColumn": "version",
-      "lastModifiedDateColumn": "modified_time",
-      "createDateColumn": "created_time"
-    },
-    {
-      "controllerRequestPath": "/sysUser",
+      "controllerRequestPath": "",
       "tableName": "sys_user",
       "entityName": "SysUser",
       "versionColumn": "version",
-      "lastModifiedDateColumn": "modified_time",
-      "createDateColumn": "created_time"
-    },
-    {
-      "controllerRequestPath": "/sysResource",
-      "tableName": "sys_resource",
-      "entityName": "SysResource",
-      "versionColumn": "version",
-      "lastModifiedDateColumn": "modified_time",
-      "createDateColumn": "created_time"
-    },
-    {
-      "controllerRequestPath": "/sysRole",
-      "tableName": "sys_role",
-      "entityName": "SysRole",
-      "versionColumn": "version",
-      "lastModifiedDateColumn": "modified_time",
-      "createDateColumn": "created_time"
-    },
-    {
-      "controllerRequestPath": "/sysRoleRelResource",
-      "tableName": "sys_role_rel_resource",
-      "entityName": "SysRoleRelResource",
-      "versionColumn": "version",
-      "lastModifiedDateColumn": "modified_time",
-      "createDateColumn": "created_time"
-    }
-  ,
-    {
-      "controllerRequestPath": "/sysUserRelRole",
-      "tableName": "sys_user_rel_role",
-      "entityName": "SysUserRelRole",
-      "versionColumn": "version",
-      "lastModifiedDateColumn": "modified_time",
-      "createDateColumn": "created_time"
+      "lastModifiedDateColumn": "last_modified_date",
+      "createDateColumn": "created_date"
     }
   ]
 }

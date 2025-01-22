@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.feiniaojin.naaf.generator.dao.MysqlMetaDao">
+<mapper namespace="com.feiniaojin.ddd.generator.dao.MysqlMetaDao">
 
-    <select id="queryTableMeta" resultType="com.feiniaojin.naaf.generator.entity.TableEntity">
+    <select id="queryTableMeta" resultType="com.feiniaojin.ddd.generator.entity.TableEntity">
         SELECT table_name AS tableName,
         table_comment AS comments
         FROM information_schema.tables
@@ -13,7 +13,7 @@
         AND table_name = #{tableName}
     </select>
 
-    <select id="queryTableColumns" resultType="com.feiniaojin.naaf.generator.entity.ColumnEntity">
+    <select id="queryTableColumns" resultType="com.feiniaojin.ddd.generator.entity.ColumnEntity">
         SELECT column_name AS columnName,
         data_type AS dataType,
         column_comment AS columnComment,
