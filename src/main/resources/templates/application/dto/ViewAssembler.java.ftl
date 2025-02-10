@@ -1,6 +1,6 @@
 package ${classPackage}.application.dto;
 
-import ${classPackage}.infrastructure.data.${classNameFirstUppercase};
+import ${classPackage}.infrastructure.persistence.data.${classNameFirstUppercase};
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;

@@ -1,9 +1,9 @@
 package ${classPackage}.application;
 
-import ${classPackage}.infrastructure.mapper.${classNameFirstUppercase}Mapper;
-import ${classPackage}.infrastructure.mapper.${classNameFirstUppercase}MapperEx;
-import ${classPackage}.infrastructure.jdbc.${classNameFirstUppercase}Repository;
-import ${classPackage}.domain.SysUserEntityFactory;
+import ${classPackage}.infrastructure.persistence.mapper.${classNameFirstUppercase}Mapper;
+import ${classPackage}.infrastructure.persistence.mapper.${classNameFirstUppercase}MapperEx;
+import ${classPackage}.infrastructure.persistence.jdbc.${classNameFirstUppercase}Repository;
+import ${classPackage}.domain.${classNameFirstUppercase}EntityFactory;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

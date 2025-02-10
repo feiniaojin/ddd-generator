@@ -69,10 +69,10 @@ public class CodeGeneratorService {
         log.info("tableEntity=[{}]", gson.toJson(tableEntity));
 
         //domain
-        generateEntity(tableEntity);
-        generateFactory(tableEntity);
-        generateExceptions(tableEntity);
-        generateDomainRepository(tableEntity);
+        generate(tableEntity, "/domain/Entity.java.ftl", "/domain/", "Entity", "java");
+        generate(tableEntity, "/domain/Factory.java.ftl", "/domain/", "EntityFactory", "java");
+        generate(tableEntity, "/domain/Exceptions.java.ftl", "/domain/exceptions/", "Exceptions", "java");
+        generate(tableEntity, "/domain/DomainRepository.java.ftl", "/domain/", "EntityRepository", "java");
 
         //application
         generateCommand(tableEntity);
@@ -84,16 +84,34 @@ public class CodeGeneratorService {
         generateViewAssembler(tableEntity);
 
         //infrastructure
-        generateData(tableEntity);
-        generateJdbcRepository(tableEntity);
-        generateDomainRepositoryImpl(tableEntity);
-        generateJavaMapper(tableEntity);
-        generateXmlMapper(tableEntity);
-        generateJavaMapperEx(tableEntity);
-        generateXmlMapperEX(tableEntity);
+        generate(tableEntity, "/infrastructure/Data.java.ftl", "/infrastructure/persistence/data/", "", "java");
+//        generateData(tableEntity);
+        generate(tableEntity, "/infrastructure/JdbcRepository.java.ftl", "/infrastructure/persistence/jdbc/", "Repository", "java");
+//        generateJdbcRepository(tableEntity);
+        generate(tableEntity, "/infrastructure/DomainRepositoryImpl.java.ftl", "/infrastructure/persistence/", "EntityRepositoryImpl", "java");
+//        generateDomainRepositoryImpl(tableEntity);
+        generate(tableEntity, "/infrastructure/Mapper.java.ftl", "/infrastructure/persistence/mapper/", "Mapper", "java");
+//        generateJavaMapper(tableEntity);
+        generate(tableEntity, "/infrastructure/Mapper.xml.ftl", "/infrastructure/persistence/mappers-xml/", "Mapper", "xml");
+//        generateXmlMapper(tableEntity);
+        generate(tableEntity, "/infrastructure/MapperEx.java.ftl", "/infrastructure/persistence/mapper/", "MapperEx", "java");
+//        generateJavaMapperEx(tableEntity);
+        generate(tableEntity, "/infrastructure/Mapper.xml.ftl", "/infrastructure/persistence/mappers-xml/", "MapperEx", "xml");
+//        generateXmlMapperEX(tableEntity);
 
         //user interface
         generateController(tableEntity);
+    }
+
+    private void generate(TableEntity tableEntity, String templatePath, String relativePath, String suffix, String ext) throws Exception {
+        Template template = configuration.getTemplate(templatePath);
+        String text = FreeMarkerTemplateUtils.processTemplateIntoString(template, tableEntity);
+        String fileName =
+                tableEntity.getOutPutPath() + tableEntity.getClassPackage().replace(".", "/") +
+                        relativePath + tableEntity.getClassNameFirstUppercase() + suffix + "." +
+                        ext;
+        forceDeleteOldFile(fileName);
+        FileUtils.write(new File(fileName), text, "UTF-8");
     }
 
     private void generateData(TableEntity tableEntity) throws Exception {
@@ -103,28 +121,6 @@ public class CodeGeneratorService {
                 tableEntity.getOutPutPath() + tableEntity.getClassPackage().replace(".", "/") +
                         "/infrastructure/data/" + tableEntity.getClassNameFirstUppercase() +
                         ".java";
-        forceDeleteOldFile(fileName);
-        FileUtils.write(new File(fileName), text, "UTF-8");
-    }
-
-    private void generateFactory(TableEntity tableEntity) throws Exception {
-        Template template = configuration.getTemplate("/domain/Factory.java.ftl");
-        String text = FreeMarkerTemplateUtils.processTemplateIntoString(template, tableEntity);
-        String fileName =
-                tableEntity.getOutPutPath() + tableEntity.getClassPackage().replace(".", "/") +
-                        "/domain/" + tableEntity.getClassNameFirstUppercase() +
-                        "EntityFactory.java";
-        forceDeleteOldFile(fileName);
-        FileUtils.write(new File(fileName), text, "UTF-8");
-    }
-
-    private void generateDomainRepository(TableEntity tableEntity) throws Exception {
-        Template template = configuration.getTemplate("/domain/DomainRepository.java.ftl");
-        String text = FreeMarkerTemplateUtils.processTemplateIntoString(template, tableEntity);
-        String fileName =
-                tableEntity.getOutPutPath() + tableEntity.getClassPackage().replace(".", "/") +
-                        "/domain/" + tableEntity.getClassNameFirstUppercase() +
-                        "EntityRepository.java";
         forceDeleteOldFile(fileName);
         FileUtils.write(new File(fileName), text, "UTF-8");
     }
@@ -180,17 +176,6 @@ public class CodeGeneratorService {
                 tableEntity.getOutPutPath() + tableEntity.getClassPackage().replace(".", "/") +
                         "/ui/web/" + tableEntity.getClassNameFirstUppercase() +
                         "Controller.java";
-        forceDeleteOldFile(fileName);
-        FileUtils.write(new File(fileName), text, "UTF-8");
-    }
-
-    private void generateExceptions(TableEntity tableEntity) throws Exception {
-        Template template = configuration.getTemplate("/domain/Exceptions.java.ftl");
-        String text = FreeMarkerTemplateUtils.processTemplateIntoString(template, tableEntity);
-        String fileName =
-                tableEntity.getOutPutPath() + tableEntity.getClassPackage().replace(".", "/") +
-                        "/domain/exceptions/" + tableEntity.getClassNameFirstUppercase() +
-                        "Exceptions.java";
         forceDeleteOldFile(fileName);
         FileUtils.write(new File(fileName), text, "UTF-8");
     }
@@ -291,17 +276,6 @@ public class CodeGeneratorService {
                 tableEntity.getOutPutPath() + tableEntity.getClassPackage().replace(".", "/") +
                         "/infrastructure/xmapper/" + tableEntity.getClassNameFirstUppercase() +
                         "Mapper.xml";
-        forceDeleteOldFile(fileName);
-        FileUtils.write(new File(fileName), text, "UTF-8");
-    }
-
-    private void generateEntity(TableEntity tableEntity) throws Exception {
-        Template template = configuration.getTemplate("/domain/Entity.java.ftl");
-        String text = FreeMarkerTemplateUtils.processTemplateIntoString(template, tableEntity);
-        String fileName =
-                tableEntity.getOutPutPath() + tableEntity.getClassPackage().replace(".", "/") +
-                        "/domain/" + tableEntity.getClassNameFirstUppercase() +
-                        "Entity.java";
         forceDeleteOldFile(fileName);
         FileUtils.write(new File(fileName), text, "UTF-8");
     }

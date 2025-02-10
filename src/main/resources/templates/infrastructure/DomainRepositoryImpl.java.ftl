@@ -1,9 +1,9 @@
-package ${classPackage}.infrastructure;
+package ${classPackage}.infrastructure.persistence;
 
 import ${classPackage}.domain.*;
 import com.feiniaojin.ddd.EntityId;
-import ${classPackage}.infrastructure.data.${classNameFirstUppercase};
-import ${classPackage}.infrastructure.jdbc.${classNameFirstUppercase}Repository;
+import ${classPackage}.infrastructure.persistence.data.${classNameFirstUppercase};
+import ${classPackage}.infrastructure.persistence.jdbc.${classNameFirstUppercase}Repository;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +35,7 @@ private ${classNameFirstUppercase}Repository jdbc${classNameFirstUppercase}Repos
         entity.setLastModifiedBy(data.getLastModifiedBy());
         entity.setLastModifiedDate(data.getLastModifiedDate());
         entity.setDeleted(data.getDeleted());
+        entity.setVersion(data.getVersion());
 
         return entity;
     }
@@ -51,6 +52,7 @@ private ${classNameFirstUppercase}Repository jdbc${classNameFirstUppercase}Repos
         data.setLastModifiedBy(entity.getLastModifiedBy());
         data.setLastModifiedDate(entity.getLastModifiedDate());
         data.setVersion(entity.getVersion());
+        data.setDeleted(entity.getDeleted());
         data.setId(entity.getId());
 
         //todo 业务字段

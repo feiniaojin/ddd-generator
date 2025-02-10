@@ -1,6 +1,6 @@
-package ${classPackage}.infrastructure.mapper;
+package ${classPackage}.infrastructure.persistence.mapper;
 
-import ${classPackage}.infrastructure.data.${classNameFirstUppercase};
+import ${classPackage}.infrastructure.persistence.data.${classNameFirstUppercase};
 
 import javax.annotation.processing.Generated;
 import java.util.List;

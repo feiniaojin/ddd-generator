@@ -1,10 +1,10 @@
 {
-  "basePackage": "com.feiniaojin.ddd.infrastructure.persistence.ruoyi",
+  "basePackage": "com.feiniaojin.ddd.ruoyi",
   "entities": [
     {
       "controllerRequestPath": "",
-      "tableName": "sys_user",
-      "entityName": "SysUser",
+      "tableName": "sys_post",
+      "entityName": "SysPost",
       "versionColumn": "version",
       "lastModifiedDateColumn": "last_modified_date",
       "createDateColumn": "created_date"

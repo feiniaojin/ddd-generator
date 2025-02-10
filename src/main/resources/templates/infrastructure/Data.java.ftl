@@ -1,4 +1,4 @@
-package ${classPackage}.infrastructure.data;
+package ${classPackage}.infrastructure.persistence.data;
 
 import lombok.Data;
 <#if createDateColumn??>

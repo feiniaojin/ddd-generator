@@ -1,7 +1,5 @@
 package ${classPackage}.domain;
 
-import ${classPackage}.entity.${classNameFirstUppercase}Entity;
-
 /**
  * 工厂存在的原因是解决复杂对象的创建问题，例如为对象的id属性赋值
  * NOTICE:本文件由代码生成器ddd-generator生成

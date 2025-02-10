@@ -4,8 +4,8 @@
   github：https://github.com/feiniaojin/code-generator
 -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${classPackage}.infrastructure.mapper.${classNameFirstUppercase}Mapper">
-    <resultMap id="BaseResultMap" type="${classPackage}.infrastructure.data.${classNameFirstUppercase}">
+<mapper namespace="${classPackage}.infrastructure.persistence.mapper.${classNameFirstUppercase}MapperEx">
+    <resultMap id="BaseResultMap" type="${classPackage}.infrastructure.persistence.data.${classNameFirstUppercase}">
     <#list columns as column>
         <result column="${column.columnName}" property="${column.propertyNameFirstLowercase}"/>
     </#list>
@@ -20,7 +20,7 @@
        </#if>
       </#list>
     </sql>
-    <insert id="insert" parameterType="${classPackage}.infrastructure.data.${classNameFirstUppercase}">
+    <insert id="insert" parameterType="${classPackage}.infrastructure.persistence.data.${classNameFirstUppercase}">
         insert into ${tableName} (
             <#list columns as column>
                <#if column_has_next>

@@ -21,13 +21,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 表名称：${tableName}
- * 表注释：${comments}
  * NOTICE:本文件由代码生成器ddd-generator生成
  * github：https://github.com/feiniaojin/ddd-generator
  */
 @Data
-@Table("${tableName}")
 @Generated("generator")
 public class ${classNameFirstUppercase}Entity extends AbstractDomainMask {
 <#list columns as column>

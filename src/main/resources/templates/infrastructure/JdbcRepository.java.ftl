@@ -1,6 +1,6 @@
-package ${classPackage}.infrastructure.jdbc;
+package ${classPackage}.infrastructure.persistence.jdbc;
 
-import ${classPackage}.infrastructure.data.${classNameFirstUppercase};
+import ${classPackage}.infrastructure.persistence.data.${classNameFirstUppercase};
 import org.springframework.data.repository.CrudRepository;
 
 /**
